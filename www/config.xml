@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.DomiBoot3" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>DomiRed</name>
+    <name>DomiMoto</name>
     <description>
-        Domired boot3
+        DomiMoto
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
         PhoneGap Team
@@ -16,11 +16,7 @@
 	<feature name="http://api.phonegap.com/1.0/media"/>
 	<feature name="http://api.phonegap.com/1.0/network"/>
 	<feature name="http://api.phonegap.com/1.0/notification"/>
-	<feature name="debug-server" required="true">
-   		<param name="domain" value="http://debug.build.phonegap.com"/>
-   		<param name="key" value="379f85fa-0a14-11e3-907d-12313d16b935"/>
-	</feature>
-    <preference name="orientation" value="default" />
+	<preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
     <preference name="webviewbounce" value="true" />
     <preference name="prerendered-icon" value="true" />
