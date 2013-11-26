@@ -3,6 +3,7 @@
 
 	function onDeviceReady() {
 	// global variables
+	
 	var db;
 	var db2;
 	var shortName = 'WebSqlDB';
@@ -12,6 +13,8 @@
 
 	db2 = openDatabase(shortName, version, displayName,maxSize);
 
+    window.plugins.statusBarNotification.notify("Put your title here", "Put your message here");
+    
 	db2.transaction(function(transaction) {
 		transaction.executeSql('SELECT name FROM sqlite_master WHERE type="table" AND name="Settings";', [],
 		function(transaction, result) {
