@@ -55,7 +55,7 @@
 		    pusher.disconnect();
 		    pusher.connect();
 		    channel.bind('order', function(data) {
-				$('#info_orden').html('<ul id="info"><li>Direccion Recogida:' + data.order.pickupaddress + '</li><li>Nombre Restaurante:' + data.order.pickupname + '</li><li>Direccion Entrega:' + data.order.deliveraddress + '</li><li>Nombre Entrega:' + data.order.delivername + '</li><li>Productos:' + data.order.content + '</li><li>Precio Productos:' + data.order.value + '</li></lu>');
+				$('#info_orden').html('<ul id="info"><li>Dirección Recogida:' + data.order.pickupaddress + '</li><li>Nombre Restaurante:' + data.order.pickupname + '</li><li>Dirección Entrega:' + data.order.deliveraddress + '</li><li>Nombre Entrega:' + data.order.delivername + '</li><li>Productos:' + data.order.content + '</li><li>Precio Productos:' + data.order.value + '</li></lu>');
 				$('#aceptar').toggle();
 				$('#rechazar').toggle();
 		    	order_id = data.order.id;

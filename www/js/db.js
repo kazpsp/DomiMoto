@@ -13,13 +13,13 @@
 	db2 = openDatabase(shortName, version, displayName,maxSize);
 
 	db2.transaction(function(transaction) {
-		transaction.executeSql('SELECT name FROM sqlite_master WHERE type="Settings" AND name="table_name";', [],
+		transaction.executeSql('SELECT name FROM sqlite_master WHERE type="table" AND name="Settings";', [],
 		function(transaction, result) {
-			if(result.length>0){
+			if(result!=null){
 			db2.transaction(function(transaction) {
 				transaction.executeSql('SELECT * FROM Settings;', [],
 				function(transaction, result) {
-					if(result.length>0){
+					if(result.rows.length>0){
 						var row = result.rows.item(0);
 						if (result != null && result.rows != null) {		
 						    $.ajax({
@@ -98,6 +98,7 @@
 	// this line clears out any content in the #lbUsers element on the page so that the next few lines will show updated
 	// content and not just keep repeating lines
 	 $('#lbUsers').html('');
+	 
 	
 	// this next section will select all the content from the User table and then go through it row by row
 	// appending the UserId  FirstName  LastName to the  #lbUsers element on the page
@@ -121,6 +122,11 @@
 	$("#ListDBValues").click(function() {	
 		 ListDBValues();
 		 return false;
+	});
+	$("#txLastName").keyup(function(e){
+	    if(e.keyCode == 13){
+			$('#AddDBValue').trigger('click');	    	
+  	    }
 	});
 	
 	function insertDBValues(data) {
