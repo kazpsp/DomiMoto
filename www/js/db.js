@@ -12,30 +12,32 @@
 
 	db2 = openDatabase(shortName, version, displayName,maxSize);
 	db2.transaction(function(transaction) {
-		transaction.executeSql('SELECT * FROM Settings;', [],
+		transaction.executeSql('SELECT EXISTS(SELECT * FROM Settings);', [],
 		function(transaction, result) {
-			var row = result.rows.item(0);
-			if (result != null && result.rows != null) {		
-			    $.ajax({
-			        type: 'POST',
-				    headers: {
-				        "email":row.Email,
-				        "password":row.PassWord
-				    },
-			        url: 'http://api.domimoto.com/loginUser',
-			        datatype: 'json',
-			        success: function(data){
-			        	if(data.auth!=null){
-				            window.location.replace("domiApp.html");
-						}
-						else{
-							alert('email o contraseña errado.');
-						}
-			        },
-			        error: function(){
-			            console.log('There was an error adding your request');
-			        }
-			    });			
+			if(result.length>0){
+				var row = result.rows.item(0);
+				if (result != null && result.rows != null) {		
+				    $.ajax({
+				        type: 'POST',
+					    headers: {
+					        "email":row.Email,
+					        "password":row.PassWord
+					    },
+				        url: 'http://api.domimoto.com/loginUser',
+				        datatype: 'json',
+				        success: function(data){
+				        	if(data.auth!=null){
+					            window.location.replace("domiApp.html");
+							}
+							else{
+								alert('email o contraseña errado.');
+							}
+				        },
+				        error: function(){
+				            console.log('There was an error adding your request');
+				        }
+				    });			
+				}
 			}
 		 },errorHandler);
 	 },errorHandler);
